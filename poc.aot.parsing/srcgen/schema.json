@@ -1,0 +1,21 @@
+{
+  "$id": "https://example.com/person.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WeatherMetadata",
+  "type": "object",
+  "properties": {
+    "Country": {
+      "type": "string",
+      "description": "Country name"
+    },
+    "City": {
+      "type": "string",
+      "description": "City name"
+    },
+    "AddressLine1": {
+      "description": "number of a building",
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

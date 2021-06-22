@@ -8,6 +8,6 @@ namespace poc.aot.parsing
 
         public string Summary { get; set; }
 
-        //public Generated.MetaData Metadata { get; set; }
+        public Generated.MetaData Metadata { get; set; }
     }
 }
