@@ -2,7 +2,10 @@
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Schema;
 
@@ -14,15 +17,23 @@ namespace poc.aot.srcgen
         public void Initialize(GeneratorInitializationContext context)
         {
             // No initialization required for this one
+#if DEBUG
+            if (!Debugger.IsAttached)
+            {
+                Debugger.Launch();
+            }
+#endif
         }
 
         public void Execute(GeneratorExecutionContext context)
         {
+            //context.AddSource(identifier, generatedCode);
             // read file into a string and parse JsonSchema from the string
             //var schema1 = Json.Parse(File.ReadAllText());
-            var jsonString = File.ReadAllText(@"C:\Projects\SourceGeneratedCsharp\poc.aot.parsing\srcgen\schema.json");
+            var schemaFile = context.AdditionalFiles
+                .First(f => f.Path.EndsWith("schema.json"));
 
-            var schema = JsonSchema.Parse(jsonString);
+            var schema = JsonSchema.Parse(schemaFile.GetText(context.CancellationToken).ToString());
 
             // begin creating the source we'll inject into the users compilation
             var sourceBuilder = new StringBuilder(@"using System;
@@ -38,8 +49,9 @@ namespace Generated
             //sourceBuilder.AppendLine("/*" + jsonString.ToString() + "*/");
             foreach (var item in schema.Properties)
             {
-                sourceBuilder.AppendLine($"public string {item.Key.ToUpperInvariant()}" + "{ get; set; }");
+                sourceBuilder.AppendLine($"public {SchemaTypeToSharpType(item.Value.Type.ToString())} {item.Key.ToUpperInvariant()}" + "{ get; set; }");
             }
+
             sourceBuilder.Append(@"
         }
 }
@@ -47,6 +59,19 @@ namespace Generated
 
             // inject the created source into the users compilation
             context.AddSource("GeneratedMetadata", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
+        }
+
+        private string SchemaTypeToSharpType(string type)
+        {
+            switch (type.ToLower())
+            {
+                case "integer":
+                    return "int";
+                case "string":
+                    return "string";
+                default:
+                    throw new InvalidEnumArgumentException("Uknonwn type in the schema");
+            }
         }
     }
 }
