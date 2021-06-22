@@ -37,6 +37,7 @@ namespace poc.aot.srcgen
 
             // begin creating the source we'll inject into the users compilation
             var sourceBuilder = new StringBuilder(@"using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Generated
 {
@@ -49,6 +50,10 @@ namespace Generated
             //sourceBuilder.AppendLine("/*" + jsonString.ToString() + "*/");
             foreach (var item in schema.Properties)
             {
+                if (item.Value.Required != null && item.Value.Required.Value)
+                {
+                    sourceBuilder.AppendLine("[Required]");
+                }
                 sourceBuilder.AppendLine($"public {SchemaTypeToSharpType(item.Value.Type.ToString())} {item.Key.ToUpperInvariant()}" + "{ get; set; }");
             }
 
