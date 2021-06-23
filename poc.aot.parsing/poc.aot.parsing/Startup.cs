@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using poc.njsonschema.gen;
 
 namespace poc.aot.parsing
 {
@@ -26,7 +27,7 @@ namespace poc.aot.parsing
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            GenerateAdditionalModels();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -54,6 +55,13 @@ namespace poc.aot.parsing
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void GenerateAdditionalModels()
+        {
+            var personalDataGenerator = new PersonalDataGenerator();
+            var code = personalDataGenerator.GenerateSharpCode().GetAwaiter().GetResult();
+            personalDataGenerator.CompileAssembly(code);
         }
     }
 }

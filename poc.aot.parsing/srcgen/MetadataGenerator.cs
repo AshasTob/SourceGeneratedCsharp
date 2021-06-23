@@ -17,12 +17,12 @@ namespace poc.aot.srcgen
         public void Initialize(GeneratorInitializationContext context)
         {
             // No initialization required for this one
-#if DEBUG
-            if (!Debugger.IsAttached)
-            {
-                Debugger.Launch();
-            }
-#endif
+//#if DEBUG
+//            if (!Debugger.IsAttached)
+//            {
+//                Debugger.Launch();
+//            }
+//#endif
         }
 
         public void Execute(GeneratorExecutionContext context)
@@ -31,7 +31,7 @@ namespace poc.aot.srcgen
             // read file into a string and parse JsonSchema from the string
             //var schema1 = Json.Parse(File.ReadAllText());
             var schemaFile = context.AdditionalFiles
-                .First(f => f.Path.EndsWith("schema.json"));
+                .First(f => f.Path.EndsWith("aot_schema.json"));
 
             var schema = JsonSchema.Parse(schemaFile.GetText(context.CancellationToken).ToString());
 
@@ -75,6 +75,7 @@ namespace Generated
                 case "string":
                     return "string";
                 default:
+                    return "string";
                     throw new InvalidEnumArgumentException("Uknonwn type in the schema");
             }
         }
