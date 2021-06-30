@@ -11,7 +11,7 @@ using NJsonSchema.CodeGeneration.CSharp;
 
 namespace poc.njsonschema.gen
 {
-    public class PersonalDataGenerator
+    public class MetaDataRuntimeGenerator
     {
         public async Task<string> GenerateSharpCode()
         {

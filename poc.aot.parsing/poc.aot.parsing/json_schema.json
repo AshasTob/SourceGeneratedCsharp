@@ -1,0 +1,20 @@
+{
+  "$id": "",
+  "$schema": "",
+  "description": "A representation of a campaign non required properties",
+  "type": "object",
+  "required": [
+    "age",
+    "quantity"
+  ],
+  "properties": {
+    "age": {
+      "type": "integer",
+      "description": "wine age"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "wine quantity"
+    }
+  }
+}

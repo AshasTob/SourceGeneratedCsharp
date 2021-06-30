@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>poc.aot.parsing</name>
+    </assembly>
+    <members>
+        <member name="P:poc.aot.parsing.WeatherForecast.MetaDataPureJson">
+            <summary>
+            This is a dynamic object
+            </summary>
+            <example>{ "quantity":13, "age":25 }</example>
+        </member>
+    </members>
+</doc>

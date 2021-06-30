@@ -38,18 +38,6 @@
     }
   },
   "properties": {
-    "description": {
-      "required": true,
-      "type": "string",
-      "description": "Campaign description",
-      "uiSettings": {
-        "template": "textInput",
-        "localisation": {
-          "en-GB": "Description"
-        },
-        "readOnly": false
-      }
-    },
     "image": {
       "required": true,
       "type": "string",

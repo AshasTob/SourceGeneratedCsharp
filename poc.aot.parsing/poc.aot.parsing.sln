@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.aot.parsing", "poc.aot.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.aot.srcgen", "srcgen\poc.aot.srcgen.csproj", "{02601A85-2832-4D09-ABE8-13753A8961AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "poc.njsonschema.gen", "poc.njsonschema.gen\poc.njsonschema.gen.csproj", "{F56DF8A1-55A2-4364-BFD5-BA31948B7C50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.njsonschema.gen", "poc.njsonschema.gen\poc.njsonschema.gen.csproj", "{F56DF8A1-55A2-4364-BFD5-BA31948B7C50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

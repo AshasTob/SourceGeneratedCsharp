@@ -5,17 +5,25 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Projects\SourceGeneratedCsharp\poc.aot.parsing\poc.aot.parsing\poc.aot.parsing.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
+    <Content Remove="json_schema.json" />
     <Content Remove="njsonschema_schema.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
     <ProjectReference Include="..\poc.njsonschema.gen\poc.njsonschema.gen.csproj" />
     <ProjectReference Include="..\srcgen\poc.aot.srcgen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="json_schema.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
     <AdditionalFiles Include="njsonschema_schema.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>

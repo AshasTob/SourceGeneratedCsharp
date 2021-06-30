@@ -12,7 +12,7 @@ using Newtonsoft.Json.Schema;
 namespace poc.aot.srcgen
 {
     [Generator]
-    public class MetadataGenerator : ISourceGenerator
+    public class MetadataCompileTimeGenerator : ISourceGenerator
     {
         public void Initialize(GeneratorInitializationContext context)
         {
@@ -41,7 +41,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Generated
 {
-    public class MetaData
+    public class MetaDataCompileTime
     {
         public string Description { get; set; }
 

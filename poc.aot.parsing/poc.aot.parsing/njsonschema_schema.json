@@ -13,44 +13,8 @@
     "chainIds",
     "productIds"
   ],
-  "definitions": {
-    "money": {
-      "$id": "money",
-      "type": "object",
-      "description": "Represents money object",
-      "required": [
-        "amount",
-        "currency"
-      ],
-      "properties": {
-        "amount": {
-          "type": "number",
-          "format": "double",
-          "description": "Amount",
-          "uiSettings": {
-            "template": "numberInput",
-            "localisation": {
-              "en-GB": "Amount"
-            },
-            "readOnly": false
-          }
-        },
-        "currency": {
-          "type": "string",
-          "description": "Currency code ISO 4217.",
-          "uiSettings": {
-            "template": "textInput",
-            "localisation": {
-              "en-GB": "Currency"
-            },
-            "readOnly": false
-          }
-        }
-      }
-    }
-  },
   "properties": {
-    "description": {
+    "water": {
       "type": "string",
       "description": "Campaign description",
       "uiSettings": {
@@ -61,7 +25,7 @@
         "readOnly": false
       }
     },
-    "image": {
+    "fire": {
       "type": "string",
       "format": "binary",
       "description": "Coupon image",
@@ -71,80 +35,6 @@
           "en-GB": "Coupon image"
         },
         "readOnly": false
-      }
-    },
-    "subInfo": {
-      "type": "string",
-      "description": "Sub info text",
-      "uiSettings": {
-        "template": "textInput",
-        "localisation": {
-          "en-GB": "Sub info text"
-        },
-        "readOnly": false
-      }
-    },
-    "topMessage": {
-      "type": "string",
-      "description": "Top message text",
-      "uiSettings": {
-        "template": "textInput",
-        "localisation": {
-          "en-GB": "Top message text"
-        },
-        "readOnly": false
-      }
-    },
-    "normalPrice": {
-      "$ref": "#/definitions/money",
-      "uiSettings": {
-        "template": "inputGroup",
-        "localisation": {
-          "en-GB": "Price on product before the coupon discount"
-        },
-        "readOnly": false
-      }
-    },
-    "price": {
-      "$ref": "#/definitions/money",
-      "uiSettings": {
-        "template": "inputGroup",
-        "localisation": {
-          "en-GB": "Price on product before the coupon discount"
-        },
-        "readOnly": true
-      }
-    },
-    "chainIds": {
-      "type": "array",
-      "description": "Chain Ids",
-      "items": {
-        "type": "string"
-      },
-      "uiSettings": {
-        "template": "multiSelect",
-        "localisation": {
-          "en-GB": "Chain Ids"
-        },
-        "readOnly": false,
-        "supportedValues": {
-          "Coop365": 1,
-          "Irma": 2
-        }
-      }
-    },
-    "productIds": {
-      "description": "Campaign product ids",
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "uiSettings": {
-        "localisation": {
-          "en-GB": "Product Ids"
-        },
-        "template": "textArea",
-        "readOnly": true
       }
     }
   }
